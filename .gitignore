@@ -1,11 +1,17 @@
+# OS generated files
 .DS_Store
 
-# Python artifacts
+# Python artifacts & Environments
 __pycache__/
 *.py[cod]
+venv/
+vendor/
 
-# Security: Never track runtime telemetry or logs
+# Security: Never track runtime telemetry, logs, or secrets
 logs/
-
-# Local environment variables
+*.csv
 .env
+
+# Offline Payloads
+*.deb
+*.tar

@@ -11,21 +11,21 @@ The firewall ensures that only trusted devices on the lab network can access man
 ## Network Environment
 
 Raspberry Pi IP address  
-150.201.166.11
+<RASPBERRY_PI_IP>
 
 Workstation IP address  
-150.201.167.242
+<WORKSTATION_IP>
 
 Subnet mask  
-255.255.254.0
+255.255.255.0
 
 Network range  
-150.201.166.0 – 150.201.167.255
+<TRUSTED_SUBNET_RANGE>
 
 Gateway  
-150.201.167.254
+<NETWORK_GATEWAY_IP>
 
-The subnet /23 allows communication between devices in the range above.
+The subnet allows communication between devices in the range above.
 
 ---
 
@@ -62,7 +62,7 @@ table inet filter {
     set trusted_subnet {
         type ipv4_addr
         flags interval;
-        elements = { 150.201.166.0/23 }
+        elements = { <TRUSTED_SUBNET_CIDR> }
     }
 
     chain input {
@@ -107,5 +107,5 @@ Stateful packet filtering ensures that legitimate traffic associated with existi
 
 This approach reduces the attack surface of the gateway and prevents unauthorized access to IoT devices connected through the Raspberry Pi.
 
-##Notes
+## Notes
 ESP32 communication is local over USB (not affected by firewall rules)
